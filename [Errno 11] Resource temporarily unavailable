@@ -1,0 +1,42 @@
+Check memory usage
+free -h
+
+Check file descriptor limits
+ulimit -n
+
+#If is below 4096
+
+#Increase file descriptor limit
+Set higher limit for current session
+ulimit -n 4096 
+
+Verify the change
+ulimit -n
+
+Edit the limits configuration
+nano /etc/security/limits.conf
+
+Add these lines at the end:
+
+*           soft          nofile      4096
+
+*           hard          nofile      4096
+
+*root       soft          nofile      4096 
+
+*root       hard         nofile       4096
+
+cd  ~/rl-swarm 
+ls -la configs/
+
+Make sure the new limit is active
+ulimit -n 4096
+
+Clean any temporary files
+rm -rf /tmp/hivemind_ 
+
+rm -rf ~/.cache/hivemind/
+
+#Start your node
+
+docker compose run --rm --build -Pit swarm-cpu
