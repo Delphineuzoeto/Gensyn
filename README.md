@@ -17,15 +17,16 @@ ulimit -n
 Edit the limits configuration
 nano /etc/security/limits.conf
 
-Add these lines at the end:
+Add these 4 lines at the end:
 
-*           soft          nofile      4096
+*           soft          nofile      4096 #1
 
-*           hard          nofile      4096
+*           hard          nofile      4096 #2
 
-*root       soft          nofile      4096 
+*root       soft          nofile      4096 #3
 
-*root       hard         nofile       4096
+*root       hard         nofile       4096 #4
+
 
 cd  ~/rl-swarm 
 ls -la configs/
